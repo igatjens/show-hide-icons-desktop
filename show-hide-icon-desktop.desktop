@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+GenericName=Show / Hide Icons
+Name=Show / Hide Icons
+Exec=show-hide-files-desktop
+X-DFM-NotShowIn=FileManager
+Name[zh_CN]=显示/隐藏图标
+Name[zh_TW]=显示/隐藏图标
+Name[en]=Show / Hide icons
+Name[es]=Mostrar / Ocultar iconos
+Name[fr]=Afficher / masquer les icônes
+Name[pt]=Mostrar / ocultar ícones
+Name[pt_BR]=Mostrar / ocultar ícones
+Name[sr]=Прикажи / сакриј иконе
+Name[ru]=Показать / Скрыть значки
+Name[tr]=Simgeleri Göster / Gizle

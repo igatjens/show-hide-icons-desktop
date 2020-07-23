@@ -1,0 +1,84 @@
+#!/bin/bash
+OIFS="$IFS"
+IFS=$'\n'
+
+
+DESKTOP_PATH=~/Desktop/
+CONFIG_FILE=~/.config/hide-files-desktop.conf
+
+#Si el archivo de configuración no existe, crearlo
+#If the configuration file does not exist, create it
+if [[ ! -f $CONFIG_FILE ]]; then
+	echo "hide=0" | tee $CONFIG_FILE
+	echo "Creando el archivo de configuración $CONFIG_FILE"
+fi
+
+#echo $CONFIG_FILE
+
+HIDE_FILES_DESKTOP=$(cat $CONFIG_FILE | sed "s| ||g" | grep -E "^hide*" | cut -d "=" -f 2)
+
+echo $HIDE_FILES_DESKTOP
+
+cd $DESKTOP_PATH
+
+#Si no estan ocultos, ocultar
+#If they are not hidden, hide
+if [[ $HIDE_FILES_DESKTOP == 0 ]]; then 
+
+	echo Ocultando archivos
+	
+	for FILE_DESKTOP in $(ls -ab $DESKTOP_PATH); do
+		
+		echo $FILE_DESKTOP
+
+		if [[ "$FILE_DESKTOP" != "." && "$FILE_DESKTOP" != ".." ]]; then
+			
+			mv $FILE_DESKTOP $( echo $FILE_DESKTOP | sed "s|^|.|" )
+		fi
+
+		
+	done
+
+	sed -i "s|^.*hide.*|hide=1|" $CONFIG_FILE
+
+#Si están oculos, hacer visibles
+#If they are oculos, make them visible
+elif [[ $HIDE_FILES_DESKTOP == 1 ]]; then
+	
+	echo Haciendo visibles los archivos
+
+	for FILE_DESKTOP in $(ls -ab $DESKTOP_PATH); do
+		
+		echo $FILE_DESKTOP
+		if [[ "$FILE_DESKTOP" != "." && "$FILE_DESKTOP" != ".." ]]; then
+			
+			mv $FILE_DESKTOP $( echo $FILE_DESKTOP | sed "s|^\.*||" )
+		fi
+		
+	done
+
+	sed -i "s|^.*hide.*|hide=0|" $CONFIG_FILE
+
+#Si no, el parámetro de configuración es erroneo y se repara
+#If not, the configuration parameter is wrong and is repaired
+else 
+
+	echo "Erro: Valor inválido en $CONFIG_FILE. Se establecerá en visible."
+	echo "hide=0" | tee $CONFIG_FILE
+
+	echo Haciendo visibles los archivos
+
+	for FILE_DESKTOP in $(ls -ab $DESKTOP_PATH); do
+		
+		echo $FILE_DESKTOP
+		if [[ "$FILE_DESKTOP" != "." && "$FILE_DESKTOP" != ".." ]]; then
+			
+			mv $FILE_DESKTOP $( echo $FILE_DESKTOP | sed "s|^\.*||" )
+		fi
+	done
+
+fi
+
+cat $CONFIG_FILE
+
+IFS="$OIFS"
