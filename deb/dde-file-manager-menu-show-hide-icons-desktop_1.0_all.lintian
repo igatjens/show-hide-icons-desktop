@@ -1,6 +1,6 @@
 Could not find a profile matching "{VENDOR}/main" for vendor deepin at /usr/share/perl5/Lintian/Profile.pm line 702.
-	Lintian::Profile::_find_vendor_profile(Lintian::Profile=HASH(0x5612daed0190)) called at /usr/share/perl5/Lintian/Profile.pm line 136
-	Lintian::Profile::new("Lintian::Profile", undef, ARRAY(0x5612d9c5c900), HASH(0x5612d9e2d740)) called at /usr/bin/lintian line 215
+	Lintian::Profile::_find_vendor_profile(Lintian::Profile=HASH(0x564bb9a21fd0)) called at /usr/share/perl5/Lintian/Profile.pm line 136
+	Lintian::Profile::new("Lintian::Profile", undef, ARRAY(0x564bb825c900), HASH(0x564bb842e5a0)) called at /usr/bin/lintian line 215
 	dplint::load_profile(undef) called at /usr/share/lintian/commands/lintian.pm line 1446
 	main::load_profile_and_configure_tags() called at /usr/share/lintian/commands/lintian.pm line 657
 	main::main() called at /usr/bin/lintian line 46
