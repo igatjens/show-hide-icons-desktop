@@ -22,7 +22,12 @@ Description: Extension for Deepin File Manager that adds the option to show and 
 0
 <</PREINST>>
 <<POSTINST>>
-0
+1
+#!/bin/bash
+
+#Add execute permissions
+
+chmod +x /usr/bin/show-hide-files-desktop
 <</POSTINST>>
 <<PRERM>>
 0
