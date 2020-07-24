@@ -1,4 +1,5 @@
-# Ocultar los iconos del escritorio de Deepin / Hide Deepin desktop icons
+# Ocultar los iconos del escritorio de Deepin
+# Hide Deepin desktop icons
 
 [![Watch the video](https://img.youtube.com/vi/e3AtOhn2xWA/hqdefault.jpg)](https://youtu.be/e3AtOhn2xWA)
 
